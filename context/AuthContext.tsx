@@ -33,7 +33,7 @@ export const AuthContextProvider = ({
   // -< User State >-
   const [user, setUser] = useState<IUser | null>(null)
   const [loading, setLoading] = useState(true)
-  console.log(user) // !
+  // console.log(user) // !
 
   // -< Firebase Listen for changes in the user's authentication state >-
   useEffect(() => {
