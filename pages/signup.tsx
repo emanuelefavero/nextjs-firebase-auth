@@ -1,7 +1,10 @@
+import { useAuth } from '@/context/AuthContext'
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 const Signup = () => {
+  const { user, signup } = useAuth()
+
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -9,6 +12,14 @@ const Signup = () => {
 
   const handleSignup = async (e: any) => {
     e.preventDefault()
+
+    // Call the signup function from the AuthContext
+    try {
+      await signup(data.email, data.password)
+    } catch (error) {
+      console.log(error)
+    }
+
     console.log(data)
   }
 

@@ -2,10 +2,11 @@
 import { initializeApp } from 'firebase/app'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: 'AIzaSyBaM2Zh4LCbJ7htburAubVJSGOh1pXsUjU',
   authDomain: 'nextjs-firebase-auth-9caff.firebaseapp.com',
   projectId: 'nextjs-firebase-auth-9caff',
   storageBucket: 'nextjs-firebase-auth-9caff.appspot.com',
@@ -15,3 +16,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
+
+// Export the auth module
+export const auth = getAuth()

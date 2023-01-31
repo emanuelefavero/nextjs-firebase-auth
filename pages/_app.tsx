@@ -3,6 +3,9 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Navbar from '@/components/Navbar'
 
+// ? Import context
+import { AuthContextProvider } from '@/context/AuthContext'
+
 // ? Import Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -19,8 +22,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Navbar />
-      <Component {...pageProps} />
+      <AuthContextProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </AuthContextProvider>
     </>
   )
 }
