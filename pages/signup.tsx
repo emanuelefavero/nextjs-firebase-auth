@@ -1,9 +1,12 @@
 import { useAuth } from '@/context/AuthContext'
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { useRouter } from 'next/router'
 
 const Signup = () => {
   const { user, signup } = useAuth()
+
+  const router = useRouter()
 
   const [data, setData] = useState({
     email: '',
@@ -13,14 +16,17 @@ const Signup = () => {
   const handleSignup = async (e: any) => {
     e.preventDefault()
 
-    // Call the signup function from the AuthContext
+    // * signup function from the AuthContext
     try {
       await signup(data.email, data.password)
+
+      // ! Redirect to the home page, login or dashboard ???
+      // router.push('/')
+      router.push('/login')
+      // router.push('/dashboard')
     } catch (error) {
       console.log(error)
     }
-
-    console.log(data)
   }
 
   return (

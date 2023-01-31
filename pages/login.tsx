@@ -1,7 +1,13 @@
+import { useAuth } from '@/context/AuthContext'
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { useRouter } from 'next/router'
 
 const Login = () => {
+  const { user, login } = useAuth()
+
+  const router = useRouter()
+
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -9,7 +15,16 @@ const Login = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault()
-    console.log(data)
+
+    // * login function from the AuthContext
+    try {
+      await login(data.email, data.password)
+
+      // Redirect user to dashboard after login
+      router.push('/dashboard')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
