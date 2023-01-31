@@ -12,7 +12,7 @@ const NavbarComp = () => {
   return (
     <Navbar bg='light' expand='lg'>
       <Container>
-        <Link href='/' passHref>
+        <Link href='/' passHref className='text-decoration-none'>
           <Navbar.Brand>NextJS Firebase Auth</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
