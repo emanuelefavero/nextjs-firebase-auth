@@ -1,6 +1,6 @@
 import { useAuth } from '@/context/AuthContext'
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Alert } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 
 const Login = () => {
@@ -13,6 +13,8 @@ const Login = () => {
     password: '',
   })
 
+  const [error, setError] = useState('')
+
   const handleLogin = async (e: any) => {
     e.preventDefault()
 
@@ -24,6 +26,18 @@ const Login = () => {
       router.push('/dashboard')
     } catch (error) {
       console.log(error)
+
+      if (error.code === 'auth/wrong-password') {
+        setError('Wrong password, please try again.')
+      } else if (error.code === 'auth/user-not-found') {
+        setError('User not found, please sign up.')
+      } else if (error.code === 'auth/invalid-email') {
+        setError('Invalid email, please try again.')
+      } else if (error.code === 'auth/argument-error') {
+        setError('Bad request, please try again.')
+      } else {
+        setError(error.message)
+      }
     }
   }
 
@@ -35,7 +49,7 @@ const Login = () => {
       }}
     >
       <h1 className='text-center my-3 '>Login</h1>
-      <Form onSubmit={handleLogin}>
+      <Form onSubmit={handleLogin} className='mb-3'>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -71,6 +85,16 @@ const Login = () => {
           Login
         </Button>
       </Form>
+
+      {
+        // * If there is an error, show it
+        // error && <p className='text-danger text-center'>{error}</p>
+        error && (
+          <Alert variant='danger' className='mb-3'>
+            {error}
+          </Alert>
+        )
+      }
     </div>
   )
 }

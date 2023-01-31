@@ -20,10 +20,8 @@ const Signup = () => {
     try {
       await signup(data.email, data.password)
 
-      // ! Redirect to the home page, login or dashboard ???
-      // router.push('/')
-      router.push('/login')
-      // router.push('/dashboard')
+      // Redirect to dashboard after signup
+      router.push('/dashboard')
     } catch (error) {
       console.log(error)
     }
