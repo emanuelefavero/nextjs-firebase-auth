@@ -2,6 +2,10 @@
 
 This is a simple Next.js app that uses Firebase Authentication to sign in users. It uses the Firebase Admin SDK to verify the ID token sent from the client.
 
+#### Screenshot
+
+<img src="screenshot.png" alt="screenshot" width="300">
+
 ## Getting Started
 
 - Clone the repo and `cd` into it
