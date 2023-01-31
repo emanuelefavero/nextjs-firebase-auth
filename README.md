@@ -17,3 +17,7 @@ This is a simple Next.js app that uses Firebase Authentication to sign in users.
 ```bash
 npm run dev
 ```
+
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+
+- Sign in with an email and password
