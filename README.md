@@ -16,7 +16,7 @@ This is a simple Next.js app that uses Firebase Authentication to sign in users.
 
 - Create a Firebase project on the [Firebase console](https://console.firebase.google.com/)
 
-- Replace the Firebase config in `config/firebase.ts` with your own. (You can find this in the Firebase console)
+- Replace the Firebase config in `firebase/config.ts` with your own. (You can find this in the Firebase console)
 
 > Note: Remember to enable email/password sign-in in the Firebase console
 
